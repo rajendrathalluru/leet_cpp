@@ -1,0 +1,26 @@
+void setZeroes(vector<vector<int>>& matrix) {
+        int c=matrix[0].size(),r=matrix.size(),firstcol=1;//this is to make the first column as not as zero initially which can make that entire to zero 
+        for(int i=0;i<r;i++){
+            if(matrix[i][0]==0)firstcol=0;
+            for(int j=1;j<c;j++)
+                if(matrix[i][j]==0)
+                    matrix[i][0]=matrix[0][j]=0;
+                
+
+            //the time complexity is O(2*m*n)
+           // and space complexity is  O(1) as we dont use the extra matrix to store the result
+
+        
+    }
+    for(int i=r-1;i>=0;i--){
+        for(int j=c-1;j>=1;j--)
+            if(matrix[i][0]==0||matrix[0][j]==0)//if any one of the top element corresponding row or column has zero then we make that element to zero
+                matrix[i][j]=0;
+
+            
+            if(firstcol==0) //here finally making the dummy or the selected column to the zeroes finally if it contains the zeroes in the seleted column
+                matrix[i][0]=0;
+            
+        }
+    
+    }

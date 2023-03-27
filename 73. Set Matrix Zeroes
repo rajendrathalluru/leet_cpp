@@ -6,8 +6,9 @@ void setZeroes(vector<vector<int>>& matrix) {
                 if(matrix[i][j]==0)
                     matrix[i][0]=matrix[0][j]=0;
                 
-
+//if matrix has m rows and n    colomuns
             //the time complexity is O(2*m*n)
+            
            // and space complexity is  O(1) as we dont use the extra matrix to store the result
 
         

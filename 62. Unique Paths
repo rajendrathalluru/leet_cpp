@@ -1,0 +1,13 @@
+
+    int uniquePaths(int m, int n) {
+        int maxdir=m+n-2;
+        int x=m-1;
+        double uniquesteps=1;
+        for(int i=1;i<=x;i++)
+        {
+            uniquesteps=uniquesteps*(maxdir-x+i)/i;
+
+        }
+        return (int)uniquesteps;
+    
+    }

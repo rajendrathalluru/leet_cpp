@@ -1,0 +1,25 @@
+int getres(vector<int>&days, vector<int>&costs,int n,int pointer,vector<int>&dp){
+   
+    if(pointer>=n){
+        return 0;
+    }
+     if(dp[pointer]!=-1)
+      return dp[pointer];
+        int first=costs[0]+getres(days,costs,n,pointer+1,dp);
+        int i;
+        for( i=pointer;i<n&&days[i]<days[pointer]+7;i++);
+         int second=costs[1]+getres(days,costs,n,i,dp);
+        
+        for(i=pointer;i<n&&days[i]<days[pointer]+30;i++);
+         int third=costs[2]+getres(days,costs,n,i,dp);
+ 
+    dp[pointer]= min(first,min(second,third));
+    return dp[pointer];
+}
+    int mincostTickets(vector<int>days, vector<int>costs) {
+        
+            int n=days.size();
+            vector<int>dp(n+1,-1);
+      return getres(days,costs,n,0,dp);
+        
+    }

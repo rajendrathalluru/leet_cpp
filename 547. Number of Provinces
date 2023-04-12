@@ -1,0 +1,38 @@
+  void dfs(int root,vector<int>adj[],int visited[]){
+        visited[root]=1;
+        for(auto x:adj[root]){\\for visiting  the adjacency nodes of the root node
+            if(!visited[x]){
+                dfs(x,adj,visited);
+            }
+        }
+    }
+
+    int findCircleNum(vector<vector<int>>& isConnected) {
+    
+        int z=isConnected.size(); \\the total no of nodes
+        int province=0;
+         vector<int>adj[z];\\making adjacency list to make the easy search
+     int visited[z];
+     for(int i=0;i<z;i++)
+     {
+         visited[i]=0;
+     }
+        
+        for(int i=0;i<z;i++){
+            for(int j=0;j<z;j++){
+                if(isConnected[i][j]==1&&i!=j){
+                adj[i].push_back(j);
+                 adj[j].push_back(i);
+                }
+            }
+        }
+    
+        for(int i=0;i<z;i++)
+        {
+            if(!visited[i]){
+                province++;\\counting the no of dfs calls which gives the total no of provinces we have in the given graph
+            dfs(i,adj,visited);\\calling the dfs call to visit the not visited nodes
+            }
+        }
+        return province;
+    }
